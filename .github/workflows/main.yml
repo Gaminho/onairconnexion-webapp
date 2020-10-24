@@ -1,0 +1,8 @@
+# main.yml
+
+name: CI # Give it any name
+
+on:
+  push:
+    branches:
+      - master
