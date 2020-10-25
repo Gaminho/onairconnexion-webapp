@@ -1,4 +1,10 @@
+<button mat-raised-button (click)="openModal()">
+    Ajouter un artiste
+</button>
+
+
 <div class="col-sm-10 card-container">
+
     <mat-card *ngFor="let artist of artists" class="artist-card">
 
         <img [src]="artist.imgUrl ? artist.imgUrl : '../../../assets/oac.jpg'" alt="avatar">

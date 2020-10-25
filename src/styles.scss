@@ -8,7 +8,13 @@ body {
     color: blanchedalmond;
     background-color: black;
     background-image: url('./assets/oac.jpg');
-    background-size: 256px 256px;
+    background-size: 200px 200px;
     background-position: bottom 16px right 16px;
     background-repeat: no-repeat;    
+}
+
+.cdk-overlay-pane {
+    position: absolute !important;
+    top: 5rem !important;
+    min-width: 30% !important;
 }

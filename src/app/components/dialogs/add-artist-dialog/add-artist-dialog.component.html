@@ -1,0 +1,60 @@
+<h4>
+    Nouvel artiste
+    <button class="close" (click)="close()">&times;</button>
+</h4>
+
+<form [formGroup]="artistForm">
+    
+    <div class="row">
+        <mat-form-field color="primary" class="col-sm-8">
+            <mat-label>Nom</mat-label>
+            <input matInput placeholder="Nom" type="text"
+                formControlName="name">
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field color="primary" class="col-sm-8">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Ville" type="text"
+                formControlName="city">
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field color="primary" class="col-sm-8">
+            <mat-label>Téléphone</mat-label>
+            <input matInput placeholder="06XXXXXXXX" type="text"
+                formControlName="phone">
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field color="primary" class="col-sm-8">
+            <mat-label>Adresse mail</mat-label>
+            <input matInput placeholder="Entrez une adresse mail" type="text"
+                formControlName="mail">
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field color="primary" class="col-sm-8">
+            <mat-label>Image</mat-label>
+            <input matInput placeholder="Adresse de l'image" type="text"
+                formControlName="imgUrl">
+        </mat-form-field>
+    </div>
+
+    <div class="action-btn">
+        <button mat-raised-button class="btn-sm" color="warn" 
+            (click)="close()">
+            Annuler
+        </button>
+
+        <button mat-raised-button class="btn-sm" color="primary" 
+            type="submit"
+            (click)="saveArtist()" [disabled]="!artistForm.valid">
+            Envoyer
+        </button>
+    </div>
+</form>

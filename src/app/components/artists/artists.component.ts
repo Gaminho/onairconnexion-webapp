@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Artist } from 'src/app/interfaces/artists';
 import { ArtistService } from 'src/app/services/artist.service';
+import { MatDialog } from '@angular/material';
+import { AddArtistDialogComponent } from '../dialogs/add-artist-dialog/add-artist-dialog.component';
 
 @Component({
   selector: 'app-artists',
@@ -11,12 +13,35 @@ export class ArtistsComponent implements OnInit {
 
   public artists: Artist[] = [];
 
-  constructor(private readonly artistService: ArtistService) { }
+  constructor(private readonly artistService: ArtistService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.refreshArtists();
+  }
+
+  public openModal() {
+    this.dialog.open(AddArtistDialogComponent)
+    .afterClosed().subscribe(
+      (artist: Artist) => this.saveArtist(artist),
+      (err) => console.error('error', err)
+    );
+  }
+
+  public refreshArtists() {
     this.artistService.getArtists().subscribe({
       next: data => this.artists = data.sort((a, b) => b.name < a.name ? 1: -1),
-      error: (e) => console.error('error', e)
+      error: e => console.error('error', e)
+    });
+  }
+
+  public saveArtist(artist: Artist): void {
+    this.artistService.addArtist(artist).subscribe({
+      next: () => {
+        this.artists.push(artist);
+        this.artists.sort((a, b) => b.name < a.name ? 1: -1);
+      },
+      error: e => console.error('error', e)
     });
   }
 
