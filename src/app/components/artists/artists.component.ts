@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Artist } from 'src/app/interfaces/artists';
+import { ArtistService } from 'src/app/services/artist.service';
 
 @Component({
   selector: 'app-artists',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistsComponent implements OnInit {
 
-  constructor() { }
+  public artists: Artist[] = [];
+
+  constructor(private readonly artistService: ArtistService) { }
 
   ngOnInit() {
+    this.artistService.getArtists().subscribe({
+      next: data => this.artists = data.sort((a, b) => b.name < a.name ? 1: -1),
+      error: (e) => console.error('error', e)
+    });
   }
 
 }

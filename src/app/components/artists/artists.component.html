@@ -1,7 +1,25 @@
-<ul>
-    <li>Kimay</li>
-    <li>NeirDa</li>
-    <li>Gargamed</li>
-    <li>Kirikou</li>
-    <li>Ewen</li>
-</ul>
+<div class="col-sm-10 card-container">
+    <mat-card *ngFor="let artist of artists" class="artist-card">
+        <h2>{{artist.name}}</h2>
+
+        <div class="details">
+
+            <div class="item-row">
+                <label>Ville</label>
+                <span>{{artist.city}}</span>
+            </div>
+
+            <div class="item-row">
+                <label>Téléphone</label>
+                <span>{{artist.phone}}</span>
+            </div>
+
+            <div class="item-row">
+                <label>Mail</label>
+                <span>{{artist.mail}}</span>
+            </div>
+
+        </div>
+    </mat-card>
+</div>
+

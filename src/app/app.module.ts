@@ -12,8 +12,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarModule } from './components/navbar/navbar.module';
 import { SongsComponent } from './components/songs/songs.component';
-import { ArtistsComponent } from './components/artists/artists.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { ArtistsModule } from './components/artists/artists.module';
 
 
 @NgModule({
@@ -21,7 +21,6 @@ import { ProjectsComponent } from './components/projects/projects.component';
     AppComponent,
     HomeComponent,
     SongsComponent,
-    ArtistsComponent,
     ProjectsComponent
   ],
   imports: [
@@ -29,6 +28,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
     BrowserAnimationsModule,
     LoginModule,
     NavbarModule,
+    ArtistsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,

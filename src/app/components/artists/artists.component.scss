@@ -1,0 +1,45 @@
+$item-by-row: 5;
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.artist-card {
+    width: calc( #{100 / $item-by-row}% - 2 * 1rem);
+    margin: .5rem 1rem;
+    display: block;
+
+    h2 {
+        font-size: 1.2rem;
+        text-decoration: underline;
+    }
+
+    div.details {
+        font-size: 1rem;
+        width: 100%;
+        position: relative;
+
+        .item-row {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            label {
+                margin: 0;
+                min-width: 35%;
+            }
+
+            span {
+                color: coral;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}
