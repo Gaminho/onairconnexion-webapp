@@ -3,4 +3,5 @@ export class Artist {
     phone: string;
     mail: string;
     city: string;
+    imgUrl: string;
 }

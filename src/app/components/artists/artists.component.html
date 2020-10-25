@@ -1,8 +1,11 @@
 <div class="col-sm-10 card-container">
     <mat-card *ngFor="let artist of artists" class="artist-card">
+
+        <img [src]="artist.imgUrl ? artist.imgUrl : '../../../assets/oac.jpg'" alt="avatar">
+
         <h2>{{artist.name}}</h2>
 
-        <div class="details">
+        <div class="details" [hidden]="true">
 
             <div class="item-row">
                 <label>Ville</label>
