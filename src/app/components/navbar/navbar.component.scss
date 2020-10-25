@@ -1,0 +1,16 @@
+div:first-of-type {
+    width: 100%;
+    height: 60px;
+    background-color: #424242;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0;
+    }
+}
