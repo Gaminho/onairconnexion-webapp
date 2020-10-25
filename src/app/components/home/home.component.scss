@@ -1,0 +1,23 @@
+$top-bar-height: 60px;
+
+div.home-content {
+    display: block;
+    height: 100%;
+}
+
+::ng-deep {
+    app-navbar {
+        position: absolute;
+        top: 0;
+        height: $top-bar-height;
+        width: 100%;
+    }
+}
+
+.root-container {
+    height: calc(100% - #{$top-bar-height});
+    width: 100%;
+    padding: 16px;
+    position: absolute;
+    bottom: 0;
+}

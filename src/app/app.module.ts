@@ -11,12 +11,18 @@ import { LoginModule } from './components/login/login.module';
 import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavbarModule } from './components/navbar/navbar.module';
+import { SongsComponent } from './components/songs/songs.component';
+import { ArtistsComponent } from './components/artists/artists.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    SongsComponent,
+    ArtistsComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

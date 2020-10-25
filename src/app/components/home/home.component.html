@@ -1,5 +1,16 @@
-<app-navbar></app-navbar>
-<p>home works!</p>
-<button mat-raised-button>
-    TEST
-</button>
+<div class="home-content">
+    <app-navbar></app-navbar>
+
+    <div class="root-container">
+
+        <div>
+            <button (click)="goTo('artists')">ARTISTES</button>
+            <button (click)="goTo('songs')">Morceaux</button>
+            <button (click)="goTo('projects')">PROJECTS</button>
+        </div>
+
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+

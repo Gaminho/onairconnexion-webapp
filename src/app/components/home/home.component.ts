@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -8,9 +9,13 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private readonly loginService: LoginService) { }
+  constructor(private readonly router: Router) { }
 
   ngOnInit() {
+  }
+
+  public goTo(where: string) {
+    this.router.navigate(['/', where]);
   }
 
 }
