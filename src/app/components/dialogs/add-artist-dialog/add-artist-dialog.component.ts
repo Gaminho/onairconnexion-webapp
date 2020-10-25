@@ -28,7 +28,9 @@ export class AddArtistDialogComponent implements OnInit {
       city: new FormControl('', []),
       phone: new FormControl('', []),
       mail: new FormControl('', []),
-      imgUrl: new FormControl('', [])
+      imgUrl: new FormControl('', []),
+      facebook: new FormControl('', []),
+      instagram: new FormControl('', [])
     });
   }
 

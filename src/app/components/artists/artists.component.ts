@@ -4,6 +4,7 @@ import { ArtistService } from 'src/app/services/artist.service';
 import { MatDialog } from '@angular/material';
 import { AddArtistDialogComponent } from '../dialogs/add-artist-dialog/add-artist-dialog.component';
 import { SeeArtistDialogComponent } from '../dialogs/see-artist-dialog/see-artist-dialog.component';
+import { faInstagram, faFacebookSquare, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-artists',
@@ -11,6 +12,10 @@ import { SeeArtistDialogComponent } from '../dialogs/see-artist-dialog/see-artis
   styleUrls: ['./artists.component.scss']
 })
 export class ArtistsComponent implements OnInit {
+
+  public readonly faFacebook = faFacebookSquare;
+  public readonly faInstagram = faInstagram;
+  public readonly faYoutube = faYoutube;
 
   public artists: Artist[] = [];
 

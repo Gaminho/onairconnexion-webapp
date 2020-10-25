@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AddArtistDialogModule } from '../dialogs/add-artist-dialog/add-artist-dialog.module';
 import { SeeArtistDialogModule } from '../dialogs/see-artist-dialog/see-artist-dialog.module';
 import { MatDialogModule } from '@angular/material';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -17,7 +18,8 @@ import { MatDialogModule } from '@angular/material';
     MatCardModule,
     MatDialogModule,
     AddArtistDialogModule,
-    SeeArtistDialogModule
+    SeeArtistDialogModule,
+    FontAwesomeModule
   ], exports: [ArtistsComponent]
 })
 export class ArtistsModule { }
