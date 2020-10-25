@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
-  styleUrls: ['./songs.component.scss']
+  styleUrls: ['./songs.component.scss',
+    '../home/home.component.scss'
+  ]
 })
 export class SongsComponent implements OnInit {
 

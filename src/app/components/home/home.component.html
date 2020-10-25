@@ -3,10 +3,10 @@
 
     <div class="root-container">
 
-        <div>
-            <button (click)="goTo('artists')">ARTISTES</button>
-            <button (click)="goTo('songs')">Morceaux</button>
-            <button (click)="goTo('projects')">PROJECTS</button>
+        <div class="navigation-div">
+            <a routerLink="/artists" routerLinkActive="active">Artistes</a>
+            <a routerLink="/songs" routerLinkActive="active">Morceaux</a>
+            <a routerLink="/projects" routerLinkActive="active">Projets</a>
         </div>
 
         <router-outlet></router-outlet>
