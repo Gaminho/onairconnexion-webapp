@@ -1,0 +1,62 @@
+.artist-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    margin: 1rem;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+div.details {
+    width: 90%;
+    position: relative;
+
+    .item-row {
+        position: relative;
+        display: block;
+        margin: 1.2rem 0;
+
+        label, span {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: left;
+            margin: 0;
+        }
+
+        label {
+            font-size: .8rem;
+        }
+
+        span {
+            color: coral;
+        }
+    }
+}
+
+button.ok {
+    margin-top: 2rem;
+}
+
+div.top {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    width: 100%;
+    text-align:right;    
+    
+    button.close {
+        color: blanchedalmond;
+        font-size: 1.4rem;
+        outline: none;
+    }
+}

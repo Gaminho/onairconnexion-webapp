@@ -1,0 +1,32 @@
+<div class="artist-dialog">
+
+    <div class="top">
+        <button class="close" (click)="close()">&times;</button>
+    </div> 
+    
+    <img [src]="artist.imgUrl ? artist.imgUrl : '../../../../assets/oac.jpg'" alt="avatar">
+
+    <h2>{{artist.name}}</h2>
+
+    <div class="details">
+
+        <div class="item-row" *ngIf="artist.city">
+            <label>Ville</label>
+            <span>{{artist.city}}</span>
+        </div>
+
+        <div class="item-row" *ngIf="artist.phone">
+            <label>Téléphone</label>
+            <span>{{artist.phone}}</span>
+        </div>
+
+        <div class="item-row" *ngIf="artist.mail">
+            <label>Mail</label>
+            <span>{{artist.mail}}</span>
+        </div>
+
+    </div>
+
+    <button mat-raised-button class="ok" (click)="close()">OK</button>
+
+</div>

@@ -33,40 +33,4 @@ $item-by-row: 5;
         cursor: pointer;
         background-color: #504f4f;
     }
-
-    div.details {
-        font-size: 1rem;
-        width: 100%;
-        position: relative;
-
-        .item-row {
-            position: relative;
-            width: 100%;
-            display: block;
-            height: 1.5rem;
-            overflow: hidden;
-            line-height: 1.5rem;
-
-            label, span {
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-
-            label {
-                margin: 0;
-                width: 40%;
-                float: left;
-                padding-right: 8px;
-                text-align: left;
-            }
-
-            span {
-                color: coral;
-                width: 60%;
-                text-align: right;
-                float: right;
-            }
-        }
-    }
 }

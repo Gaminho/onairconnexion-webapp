@@ -6,6 +6,16 @@
     }
 }
 
-button.close {
-    color: blanchedalmond;
+div.top {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    width: 100%;
+    text-align:right;    
+    
+    button.close {
+        color: blanchedalmond;
+        font-size: 1.4rem;        
+        outline: none;
+    }
 }

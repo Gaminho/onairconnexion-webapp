@@ -17,6 +17,6 @@ import { AddArtistDialogComponent } from './add-artist-dialog.component';
     MatInputModule,
     ReactiveFormsModule
   ],
-  entryComponents: [AddArtistDialogComponent],
+  entryComponents: [AddArtistDialogComponent]
 })
 export class AddArtistDialogModule { }

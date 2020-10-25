@@ -3,6 +3,7 @@ import { Artist } from 'src/app/interfaces/artists';
 import { ArtistService } from 'src/app/services/artist.service';
 import { MatDialog } from '@angular/material';
 import { AddArtistDialogComponent } from '../dialogs/add-artist-dialog/add-artist-dialog.component';
+import { SeeArtistDialogComponent } from '../dialogs/see-artist-dialog/see-artist-dialog.component';
 
 @Component({
   selector: 'app-artists',
@@ -20,12 +21,15 @@ export class ArtistsComponent implements OnInit {
     this.refreshArtists();
   }
 
-  public openModal() {
-    this.dialog.open(AddArtistDialogComponent)
-    .afterClosed().subscribe(
+  public addArtist() {
+    this.dialog.open(AddArtistDialogComponent).afterClosed().subscribe(
       (artist: Artist) => this.saveArtist(artist),
       (err) => console.error('error', err)
     );
+  }
+
+  public seeArtist(artist: Artist) {
+    this.dialog.open(SeeArtistDialogComponent, {data: artist});
   }
 
   public refreshArtists() {

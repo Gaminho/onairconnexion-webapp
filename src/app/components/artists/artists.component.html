@@ -1,34 +1,16 @@
-<button mat-raised-button (click)="openModal()">
+<button mat-raised-button (click)="addArtist()">
     Ajouter un artiste
 </button>
 
 
 <div class="col-sm-10 card-container">
 
-    <mat-card *ngFor="let artist of artists" class="artist-card">
+    <mat-card *ngFor="let artist of artists" class="artist-card" (click)="seeArtist(artist)">
 
         <img [src]="artist.imgUrl ? artist.imgUrl : '../../../assets/oac.jpg'" alt="avatar">
 
         <h2>{{artist.name}}</h2>
 
-        <div class="details" [hidden]="true">
-
-            <div class="item-row">
-                <label>Ville</label>
-                <span>{{artist.city}}</span>
-            </div>
-
-            <div class="item-row">
-                <label>Téléphone</label>
-                <span>{{artist.phone}}</span>
-            </div>
-
-            <div class="item-row">
-                <label>Mail</label>
-                <span>{{artist.mail}}</span>
-            </div>
-
-        </div>
     </mat-card>
 </div>
 

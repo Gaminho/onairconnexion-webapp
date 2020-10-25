@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ArtistsComponent } from './artists.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { AddArtistDialogComponent } from '../dialogs/add-artist-dialog/add-artist-dialog.component';
 import { AddArtistDialogModule } from '../dialogs/add-artist-dialog/add-artist-dialog.module';
+import { SeeArtistDialogModule } from '../dialogs/see-artist-dialog/see-artist-dialog.module';
 import { MatDialogModule } from '@angular/material';
 
 
@@ -16,7 +16,8 @@ import { MatDialogModule } from '@angular/material';
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
-    AddArtistDialogModule
+    AddArtistDialogModule,
+    SeeArtistDialogModule
   ], exports: [ArtistsComponent]
 })
 export class ArtistsModule { }
