@@ -9,7 +9,15 @@
 
         <img [src]="artist.imgUrl ? artist.imgUrl : '../../../assets/oac.jpg'" alt="avatar">
 
-        <h2>{{artist.name}}</h2>
+        <div>
+            <h2>{{artist.name}}</h2>
+            <div class="social-networks">
+                <fa-icon *ngIf="artist.facebook" [icon]="faFacebook"></fa-icon>
+                <fa-icon *ngIf="artist.instagram" [icon]="faInstagram"></fa-icon>
+                <fa-icon *ngIf="artist.youtube" [icon]="faYoutube"></fa-icon>
+            </div>
+        </div>
+
 
     </mat-card>
 </div>

@@ -4,4 +4,7 @@ export class Artist {
     mail: string;
     city: string;
     imgUrl: string;
+    facebook: string;
+    instagram: string;
+    youtube: string;
 }
