@@ -1,4 +1,4 @@
-import { User, UserRole } from "../interfaces/user";
+import { UserRole } from "../interfaces/user";
 
 export const translateRole = (role: UserRole) => {
     if (role == UserRole.ADMIN) {
@@ -8,4 +8,4 @@ export const translateRole = (role: UserRole) => {
     } else {
         return 'Inconnu'
     }
-}
+};

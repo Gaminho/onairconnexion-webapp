@@ -39,7 +39,6 @@ export class AddArtistDialogComponent implements OnInit {
   }
 
   public saveArtist(): void {
-    console.log('artist:', this.artistForm.value); 
     this.dialogRef.close(this.artistForm.value);
   }
 

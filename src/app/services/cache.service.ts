@@ -34,7 +34,6 @@ export class CacheService {
   }
 
   public setCurrentAccount(user: User) {
-    console.log('user', user);
     this.currentUser = user;
     this.setRole(user.role);
   }

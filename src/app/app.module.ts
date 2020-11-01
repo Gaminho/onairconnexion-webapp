@@ -17,6 +17,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SigningModule } from './components/signing/signing.module';
 import { NavbarModule } from './components/navbar/navbar.module';
 import { AccountModule } from './components/account/account.module';
+import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import {MatListModule} from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -33,6 +36,11 @@ firebase.initializeApp(environment.firebaseConfig);
     SigningModule,
     ArtistsModule,
     AccountModule,
+    MatButtonModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
     NavbarModule,
     SheetModule,
     AppRoutingModule,

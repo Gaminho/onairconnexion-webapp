@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User, UserRole } from 'src/app/interfaces/user';
 import { CacheService } from 'src/app/services/cache.service';
-import { UserService } from 'src/app/services/fb-services/user.service';
 import { translateRole } from 'src/app/utils/user-utils';
 
 @Component({
@@ -11,7 +10,7 @@ import { translateRole } from 'src/app/utils/user-utils';
 })
 export class AccountComponent implements OnInit {
 
-  private user = new User();
+  public user = new User();
 
   constructor(
     private readonly cacheService: CacheService,

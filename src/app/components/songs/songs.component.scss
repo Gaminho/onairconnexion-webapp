@@ -1,0 +1,46 @@
+.songs-list {
+    width: 60%;
+    margin: auto;
+    min-height: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+        margin: 1rem auto;
+    }
+
+}
+
+::ng-deep {
+
+    mat-list {
+        width: 80%;
+    }
+
+    mat-list-item {
+        background-color: #424242;
+        margin: .2rem 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .mat-list-item-content {
+            justify-content: space-between;    
+        }
+
+        /*
+        &:hover {
+            cursor: pointer;
+            background-color: #717171;
+        }
+        */
+
+        span {
+            color: blanchedalmond;
+            font-size: .8rem;
+        }
+    }
+
+}

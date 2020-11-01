@@ -24,4 +24,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/', where]);
   }
 
+  get isAdmin(): boolean {
+    return this.cacheService.isAdmin();
+  }
+
 }
