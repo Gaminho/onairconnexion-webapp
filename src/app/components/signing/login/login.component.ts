@@ -6,17 +6,16 @@ import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['../signing.scss']
 })
 export class LoginComponent implements OnInit {
 
-  public error = false;
-  public alertType = '';
-
+  public errorMsg: string;
+  private loading = false;
   public loginForm: FormGroup;
 
   constructor(private loginService: LoginService, private formBuilder: FormBuilder,
-    private router: Router,) {
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,26 +30,42 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public showSuccess() {
-    this.error = true;
-    this.alertType = 'success';
-    setTimeout(() => this.error = false, 3 * 1000);
+  public showError(msg: string) {
+    this.errorMsg = msg;
   }
 
-  public showError() {
-    this.error = true;
-    this.alertType = 'error';
-    setTimeout(() => this.error = false, 3 * 1000);
+  private startLoading(): void {
+    this.loading = true;
+    this.loginForm.disable();
+  }
+
+  private stopLoading(): void {
+    this.loading = false;
+    this.loginForm.enable();
+  }
+
+  private cleanError(): void {
+    this.errorMsg = undefined;
   }
 
   public login() {
-    this.loginService.login({login: '', password: this.loginForm.controls['password'].value}).subscribe({
-      next: () => {
-        this.showSuccess();
-        this.router.navigate(['']);
-      },
-      error: () => this.showError()
-    });
+    this.cleanError();
+    this.startLoading();
+    this.loginService.login(this.loginForm.value).subscribe({
+      next: () => this.router.navigate(['']),
+      error: e => {
+        this.showError(e.message);
+        this.stopLoading();
+      }
+    })
+  }
+
+  public goToSubscription(): void {
+    this.router.navigate(['/subscribe']);
+  }
+
+  get isLoading(): boolean {
+    return this.loading;
   }
 
 }

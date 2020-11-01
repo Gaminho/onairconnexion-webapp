@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
+import { UserRole } from 'src/app/interfaces/user';
+import { CacheService } from 'src/app/services/cache.service';
+import { UserService } from 'src/app/services/fb-services/user.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +12,20 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private readonly router: Router) { }
+  role: UserRole;
+
+  constructor(private readonly router: Router,
+    private readonly cacheService: CacheService) { }
 
   ngOnInit() {
   }
 
   public goTo(where: string) {
     this.router.navigate(['/', where]);
+  }
+
+  get isAdmin(): boolean {
+    return this.cacheService.isAdmin();
   }
 
 }

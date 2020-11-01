@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarModule } from '../navbar/navbar.module';
 import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
-    NavbarModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule
   ]
 })
 export class HomeModule { }

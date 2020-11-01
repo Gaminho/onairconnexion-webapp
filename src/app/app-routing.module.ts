@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AccountComponent } from './components/account/account.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { SheetComponent } from './components/sheet/sheet.component';
+import { LoginComponent } from './components/signing/login/login.component';
+import { SubscriptionComponent } from './components/signing/subscription/subscription.component';
 import { SongsComponent } from './components/songs/songs.component';
 import { IsSignedInGuard } from './guards/is-signed-in.guard';
 
@@ -27,10 +30,19 @@ const routes: Routes = [
       {
           path: 'projects',
           component: ProjectsComponent
+      },
+      {
+          path: 'sheets',
+          component: SheetComponent
+      },
+      {
+        path: 'account',
+        component: AccountComponent
       }
     ]     
   },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'subscribe', component: SubscriptionComponent },
 ];
 
 @NgModule({

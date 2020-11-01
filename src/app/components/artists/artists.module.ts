@@ -20,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AddArtistDialogModule,
     SeeArtistDialogModule,
     FontAwesomeModule
-  ], exports: [ArtistsComponent]
+  ], 
+  exports: [ArtistsComponent]
 })
 export class ArtistsModule { }

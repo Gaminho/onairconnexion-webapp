@@ -1,0 +1,16 @@
+<div class="container">
+    
+    <form [formGroup]="sheetForm">
+    
+        <h4>Nouvelle note</h4>
+    
+        <textarea formControlName="content"
+            placeholder="Entrez un message"></textarea>
+    
+        <button mat-raised-button color="primary" type="submit"
+            (click)="saveSheet()" [disabled]="!sheetForm.valid">
+            Envoyer
+        </button>
+    </form>
+
+</div>

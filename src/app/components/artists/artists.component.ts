@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Artist } from 'src/app/interfaces/artists';
-import { ArtistService } from 'src/app/services/artist.service';
+import { Artist } from 'src/app/interfaces/artist';
+import { ArtistService } from 'src/app/services/fb-services/artist.service';
 import { MatDialog } from '@angular/material';
 import { AddArtistDialogComponent } from '../dialogs/add-artist-dialog/add-artist-dialog.component';
 import { SeeArtistDialogComponent } from '../dialogs/see-artist-dialog/see-artist-dialog.component';
 import { faInstagram, faFacebookSquare, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-artists',
@@ -20,6 +21,7 @@ export class ArtistsComponent implements OnInit {
   public artists: Artist[] = [];
 
   constructor(private readonly artistService: ArtistService,
+    private readonly cacheService: CacheService, 
     public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -38,10 +40,7 @@ export class ArtistsComponent implements OnInit {
   }
 
   public refreshArtists() {
-    this.artistService.getArtists().subscribe({
-      next: data => this.artists = data.sort((a, b) => b.name < a.name ? 1: -1),
-      error: e => console.error('error', e)
-    });
+    this.artists = this.cacheService.getArtists();
   }
 
   public saveArtist(artist: Artist): void {

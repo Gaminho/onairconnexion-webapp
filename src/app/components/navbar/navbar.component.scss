@@ -1,4 +1,4 @@
-div:first-of-type {
+div.navbar-container {
     width: 100%;
     height: 100%;
     background-color: #424242;
@@ -12,5 +12,20 @@ div:first-of-type {
         font-weight: bold;
         text-transform: uppercase;
         margin: 0;
+    }
+
+    a {
+        color:blanchedalmond;
+        margin-right: 8px;
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        &.active {
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
     }
 }
