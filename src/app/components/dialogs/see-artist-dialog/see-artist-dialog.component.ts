@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Artist } from 'src/app/interfaces/artists';
+import { Artist } from 'src/app/interfaces/artist';
 
 @Component({
   selector: 'app-see-artist-dialog',

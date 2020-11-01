@@ -1,8 +1,14 @@
-<div>
+<div class="navbar-container">
+
     <label>ONAIR CONNEXION</label>
 
-    <button mat-raised-button (click)="logOut()">
-        <fa-icon [icon]="faSignOutAlt"></fa-icon>
-    </button>
+    <div>
+
+        {{role}}
+
+        <button mat-raised-button (click)="logOut()">
+            <fa-icon [icon]="faSignOutAlt"></fa-icon>
+        </button>
+    </div>
     
 </div>

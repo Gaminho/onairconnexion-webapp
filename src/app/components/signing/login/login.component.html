@@ -1,0 +1,37 @@
+<div class="container">
+    
+  <article>
+      <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+      <h3>Se connecter</h3>
+
+      <div class="error"[ngClass]="{'opak': !errorMsg}">
+          {{errorMsg || ' '}} 
+      </div>
+
+      <form [formGroup]="loginForm">
+            
+        <mat-form-field class="example-full-width">
+          <mat-label>Adresse mail</mat-label>
+          <input matInput formControlName="login" placeholder="onairconnex@gmail.com">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput placeholder="Mot de passe" type="password" 
+            formControlName="password">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="login()"
+          [disabled]="!loginForm.valid">
+          Connexion
+        </button>
+
+        <button mat-raised-button (click)="goToSubscription()">
+          Créer un compte
+        </button>
+
+      </form>
+
+  </article>
+</div>

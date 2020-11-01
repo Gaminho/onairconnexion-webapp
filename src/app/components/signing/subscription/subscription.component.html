@@ -1,0 +1,46 @@
+<div class="container">
+    
+    <article class="subscription">
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
+        <h3>Créer un compte</h3>
+
+        <div class="error"[ngClass]="{'opak': !errorMsg}">
+            {{errorMsg || 'rien'}} 
+        </div>
+
+        <form [formGroup]="subscribeForm">
+            
+            <mat-form-field class="example-full-width">
+                <mat-label>Adresse mail</mat-label>
+                <input matInput required formControlName="login" placeholder="onairconnexion@gmail.com">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput required placeholder="Mot de passe" type="password" 
+                formControlName="password">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" [hidden]="true">
+                <mat-label>Role</mat-label>
+                <select matNativeControl required formControlName="role">
+                    <option value="admin">Administrateur</option>
+                    <option value="membre">Membre</option>
+                </select>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="signUp()"
+                [disabled]="!subscribeForm.valid">
+                S'inscrire
+            </button>
+
+            <button mat-raised-button (click)="goToLogin()">
+                J'ai déjà un compte
+            </button>
+
+        </form>
+
+    </article>
+  
+</div>
