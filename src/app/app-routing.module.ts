@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AccountComponent } from './components/account/account.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
@@ -33,11 +34,15 @@ const routes: Routes = [
       {
           path: 'sheets',
           component: SheetComponent
+      },
+      {
+        path: 'account',
+        component: AccountComponent
       }
     ]     
   },
   { path: 'login', component: LoginComponent },
-  { path: 'subscribe', component: SubscriptionComponent }
+  { path: 'subscribe', component: SubscriptionComponent },
 ];
 
 @NgModule({

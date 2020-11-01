@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NavbarModule } from './components/navbar/navbar.module';
 import { MHttpInterceptor } from './interceptors/http-interceptor';
 import { SongsComponent } from './components/songs/songs.component';
 import { ProjectsComponent } from './components/projects/projects.component';
@@ -16,6 +15,8 @@ import * as firebase from 'firebase';
 import { environment } from 'src/environments/environment';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SigningModule } from './components/signing/signing.module';
+import { NavbarModule } from './components/navbar/navbar.module';
+import { AccountModule } from './components/account/account.module';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -24,14 +25,15 @@ firebase.initializeApp(environment.firebaseConfig);
     AppComponent,
     HomeComponent,
     SongsComponent,
-    ProjectsComponent
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SigningModule,
-    NavbarModule,
     ArtistsModule,
+    AccountModule,
+    NavbarModule,
     SheetModule,
     AppRoutingModule,
     FontAwesomeModule

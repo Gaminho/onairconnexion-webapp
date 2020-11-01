@@ -10,6 +10,7 @@ export class CacheService {
 
   private artists: Artist[];
   private currentUser: User;
+  private currentUID: string;
   private role: string;
 
   constructor(private readonly artistService: ArtistService) { }
@@ -24,7 +25,16 @@ export class CacheService {
     return this.artists || [];
   }
 
+  public setCurrentUID(uid: string) {
+    this.currentUID = uid;
+  }
+
+  public getCurrentUID(): string {
+    return this.currentUID || null;
+  }
+
   public setCurrentAccount(user: User) {
+    console.log('user', user);
     this.currentUser = user;
     this.setRole(user.role);
   }
@@ -42,12 +52,15 @@ export class CacheService {
     return this.role != null;
   }
 
-
   public isAdmin(): boolean {
     return this.role === UserRole.ADMIN;
   }
 
   get _role(): string {
     return this.role;
+  }
+
+  getUser(): User {
+    return this.currentUser;
   }
 }

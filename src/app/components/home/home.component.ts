@@ -18,8 +18,6 @@ export class HomeComponent implements OnInit {
     private readonly cacheService: CacheService) { }
 
   ngOnInit() {
-    console.error('user', this.cacheService.isAdmin());
-    console.error('role', this.cacheService._role);
   }
 
   public goTo(where: string) {

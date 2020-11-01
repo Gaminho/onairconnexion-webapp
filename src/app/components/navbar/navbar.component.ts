@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private readonly loginService: LoginService,
     private readonly cacheService: CacheService
-    ) { }
+  ) { }
   
   ngOnInit(): void {
     this.role = this.cacheService._role;

@@ -23,16 +23,18 @@ export class LoginService {
       firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(() => {
           firebase.auth().signInAndRetrieveDataWithEmailAndPassword(credentials.login, credentials.password)
-            .then((x: firebase.auth.UserCredential) => x.user.uid)
-            .then((uid: string) => {
-              this.userService.getUserWithUid(uid).subscribe({
-                next: u => {
-                  this.cacheService.setCurrentAccount(u);
-                  resolve(uid);
+            .then((x: firebase.auth.UserCredential) => x.user)
+            .then((u: firebase.User) => {
+              this.userService.getUserWithUid(u.uid).subscribe({
+                next: user => {
+                  user.mail = u.email; 
+                  this.cacheService.setCurrentAccount(user);
+                  this.cacheService.setCurrentUID(u.uid);
+                  resolve(u.uid);
                 },
                 error: e => {
                   console.error('error', e);
-                  this.cacheService.setCurrentAccount(new User(uid, null, UserRole.MEMBER));
+                  this.cacheService.setCurrentAccount(new User(u.uid, null, UserRole.MEMBER));
                 }
             })
         })
@@ -50,17 +52,19 @@ export class LoginService {
     }.bind(this));
   }
 
+
   public signUp(credentials: any): Observable<any> {
     console.log('cred', credentials);
     return from(new Promise((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(credentials.login, credentials.password)
-      .then((x: firebase.auth.UserCredential) => x.user.uid)
-      .then(function(uid: string) {
-        const user = new User(uid, null, credentials.role);
+      .then((x: firebase.auth.UserCredential) => x.user)
+      .then((u: firebase.User) => {
+        const user = new User(u.uid, u.email, credentials.role);
         this.userService.createUser(user).subscribe({
           next: () => {
             this.cacheService.setCurrentAccount(user);
-            resolve(uid);
+            this.cacheService.setCurrentUID(u.uid);
+            resolve(u.uid);
           },
           error: e => {
             console.error('error', e);
@@ -68,30 +72,10 @@ export class LoginService {
             reject(e);
           }
         });
-      }.bind(this))
+      })
       .catch(e => reject(e))
     }));
   }
 
-  /*
-  public signUp(credentials: any): Observable<any> {
-    console.log('cred', credentials);
-    return from(new Promise((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(credentials.login, credentials.password)
-      .then((x: firebase.auth.UserCredential) => x.user.uid)
-      .then(function(uid: string) {
-        const user = new User(uid, null, credentials.role);
-        this.userService.createUser(user).subscribe({
-          next: (x: any) => resolve(x),
-          error: (e: any) => {
-            console.error('error', e)
-            firebase.auth().currentUser.delete();
-            reject(e);
-          }
-        });
-      }.bind(this))
-      .catch(e => reject(e))
-    }));
-  }
-  */
 }
+
