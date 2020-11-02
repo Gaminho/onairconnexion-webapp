@@ -1,5 +1,4 @@
 .songs-list {
-    width: 60%;
     margin: auto;
     min-height: 45%;
     display: flex;
@@ -12,10 +11,14 @@
 
 }
 
+form {
+    border: red dashed 1px;
+}
+
 ::ng-deep {
 
     mat-list {
-        width: 80%;
+        width: 60%;
     }
 
     mat-list-item {
@@ -28,6 +31,14 @@
 
         .mat-list-item-content {
             justify-content: space-between;    
+        }
+
+        .left {
+            p {
+                margin: 0;
+                font-size: .7rem;
+                color: blanchedalmond;
+            }
         }
 
         /*

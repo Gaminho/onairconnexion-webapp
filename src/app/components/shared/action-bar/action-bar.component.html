@@ -1,0 +1,9 @@
+<div class="search-input">
+    <input matInput placeholder="Rechercher un morceau" type="text"
+        class="form-control" id="title" [formControl]="searchControl">
+    <span>
+        <fa-icon [icon]="faSearch"></fa-icon>
+    </span>
+</div>
+
+<button mat-raised-button appAdmin (click)="add()">{{buttonLabel}}</button>

@@ -1,0 +1,28 @@
+.sidebar-content {
+    background-color: #e7e7e7;
+    height: 100%;
+    padding-top: 8px;
+}
+
+a {
+    width: 100%;
+    padding: 0 12px;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    color: #424242;
+    
+    &:hover {
+        cursor: pointer;
+        border-left: 0px solid #424242;
+        border-right: 2px solid #424242;
+        background-color: #dbdbdb;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    &.active {
+        font-weight: bold;
+    }
+}

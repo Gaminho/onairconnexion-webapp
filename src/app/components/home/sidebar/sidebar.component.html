@@ -1,0 +1,10 @@
+<div class="sidebar-content">
+    <a routerLink="/home" routerLinkActive="active">Accueil</a>
+    <a routerLink="/songs" routerLinkActive="active">Morceaux</a>
+    <a routerLink="/artists" routerLinkActive="active">Artistes</a>
+    <a routerLink="/projects" routerLinkActive="active">Projets</a>
+    <a routerLink="/projects" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/projects" routerLinkActive="active">Concerts</a>
+    <a routerLink="/projects" routerLinkActive="active">Construire un set</a>
+    <a *ngIf="isAdmin" routerLink="/sheets" routerLinkActive="active">Bloc Note</a>
+</div>

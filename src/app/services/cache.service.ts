@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Artist } from '../interfaces/artist';
 import { User, UserRole } from '../interfaces/user';
 import { ArtistService } from './fb-services/artist.service';
@@ -8,7 +9,8 @@ import { ArtistService } from './fb-services/artist.service';
 })
 export class CacheService {
 
-  private artists: Artist[];
+  private artists: Artist[] = [];
+  private obsArtists: BehaviorSubject<Artist[]> = new BehaviorSubject([]);
   private currentUser: User;
   private currentUID: string;
   private role: string;
@@ -16,13 +18,23 @@ export class CacheService {
   constructor(private readonly artistService: ArtistService) { }
 
   public init(): void {
-    this.artistService.getArtists().subscribe(d => {
-      this.artists = d.sort((a, b) => b.name < a.name ? 1: -1);
-    });
+    this.updateArtists();
+  }
+
+  public updateArtists(): void {
+    this.artistService.getArtists().subscribe(
+      d => {
+        this.artists = d.sort((a, b) => b.name < a.name ? 1: -1);
+        this.obsArtists.next(this.artists);
+      });
   }
 
   public getArtists(): Artist[] {
-    return this.artists || [];
+    return this.artists;
+  }
+
+  public getArtistsAsObservable(): BehaviorSubject<Artist[]> {
+    return this.obsArtists;
   }
 
   public setCurrentUID(uid: string) {
@@ -34,6 +46,7 @@ export class CacheService {
   }
 
   public setCurrentAccount(user: User) {
+    console.log('store in cache', user);
     this.currentUser = user;
     this.setRole(user.role);
   }

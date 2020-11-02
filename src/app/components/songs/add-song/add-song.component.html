@@ -1,0 +1,17 @@
+<form [formGroup]="songForm" class="form-inline">
+    
+    <div class="form-group mb-1">
+        <label for="title" class="sr-only">Titre</label>
+        <input matInput placeholder="Titre" type="text"
+            class="form-control" id="title"
+            formControlName="title">
+    </div>
+
+    <div class="form-group mx-sm-3 mb-1">
+        <button mat-raised-button (click)="addSong()" type="submit"
+            [disabled]="!songForm.valid">
+            Ajouter un morceau
+        </button>
+    </div>
+    
+</form>
