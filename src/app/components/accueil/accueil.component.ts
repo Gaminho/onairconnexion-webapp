@@ -9,8 +9,8 @@ import { CacheService } from 'src/app/services/cache.service';
 })
 export class AccueilComponent implements OnInit {
 
-  private artistCount: number = 0;
-  private songCount: number = 0;
+  public artistCount: number = 0;
+  public songCount: number = 0;
 
   constructor(private readonly cacheService: CacheService) { }
 
