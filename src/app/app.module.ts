@@ -33,7 +33,7 @@ firebase.initializeApp(environment.firebaseConfig);
     AppComponent,
     HomeComponent,
     ProjectsComponent,
-    AccueilComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,

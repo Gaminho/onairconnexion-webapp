@@ -1,17 +1,53 @@
-<form [formGroup]="songForm" class="form-inline">
-    
-    <div class="form-group mb-1">
-        <label for="title" class="sr-only">Titre</label>
-        <input matInput placeholder="Titre" type="text"
-            class="form-control" id="title"
-            formControlName="title">
-    </div>
+<div class="top-bar">
+    <button mat-raised-button (click)="back()">
+        <fa-icon [icon]="faBack"></fa-icon>
+        Retour
+    </button>
+</div>
 
-    <div class="form-group mx-sm-3 mb-1">
-        <button mat-raised-button (click)="addSong()" type="submit"
-            [disabled]="!songForm.valid">
-            Ajouter un morceau
-        </button>
-    </div>
+<div class="songs-content">
+        
+    <form [formGroup]="songForm" class="form-inline">
     
-</form>
+        <h4>Nouveau morceau</h4>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Titre</mat-label>
+            <input matInput placeholder="Saisissez le titre" formControlName="title">
+        </mat-form-field>
+
+        <br/>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Durée</mat-label>
+            <input matInput placeholder="Saisissez la durée" type="number"
+                formControlName="durationInSec">
+            <mat-hint>en secondes ({{friendlyDuration}})</mat-hint>
+        </mat-form-field>
+
+        <br/>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Artistes</mat-label>
+            <mat-select [formControl]="artists" multiple>
+                <mat-select-trigger>
+                {{artists.value ? artists.value[0].name : ''}}
+                <span *ngIf="artists.value?.length > 1" class="example-additional-selection">
+                    (+{{artists.value.length - 1}} {{artists.value?.length === 2 ? 'autre' : 'autres'}})
+                </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let artist of artistList" [value]="artist">{{artist.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+          <br/>
+
+        <div class="form-group mx-sm-3 mb-1">
+            <button mat-raised-button color="primary" (click)="addSong()" type="submit"
+                [disabled]="!songForm.valid">
+                Ajouter un morceau
+            </button>
+        </div>
+
+    </form>
+</div>

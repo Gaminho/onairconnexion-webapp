@@ -5,12 +5,13 @@ import { HomeComponent } from './components/home/home.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SheetComponent } from './components/sheet/sheet.component';
 import { SubscriptionComponent } from './components/signing/subscription/subscription.component';
-import { SongsComponent } from './components/songs/songs.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AccountComponent } from './components/account/account.component';
 import { LoginComponent } from './components/signing/login/login.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { AddSongComponent } from './components/songs/add-song/add-song.component';
+import { SongListComponent } from './components/songs/song-list/song-list.component';
+import { SongsComponent } from './components/songs/songs.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -34,11 +35,17 @@ const routes: Routes = [
       },
       {
         path: 'songs',
-        component: SongsComponent
-      },
-      {
-        path: 'new-song',
-        component: AddSongComponent
+        component: SongsComponent,
+        children: [
+          {
+            path: 'list',
+            component: SongListComponent
+          },
+          {
+            path: 'new',
+            component: AddSongComponent
+          }
+        ]
       },
       {
           path: 'projects',

@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Song } from 'src/app/interfaces/song';
 import { SongService } from 'src/app/services/fb-services/song.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { friendlyDuration } from 'src/app/utils/song-utils';
 import { CacheService } from 'src/app/services/cache.service';
 import { Router } from '@angular/router';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { Artist } from 'src/app/interfaces/artist';
+import { friendlyDuration } from 'src/app/utils/song-utils';
+
 
 @Component({
   selector: 'app-add-song',
   templateUrl: './add-song.component.html',
-  styleUrls: ['./add-song.component.scss']
+  styleUrls: ['./add-song.component.scss', '../songs.component.scss']
 })
 export class AddSongComponent implements OnInit {
 
+  public faBack = faChevronLeft;
   public songForm: FormGroup;
+
+  public artists = new FormControl();
+  artistList: Artist[] = [];
+  //['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   constructor(private readonly songService: SongService,
     private formBuilder: FormBuilder,
@@ -22,31 +29,36 @@ export class AddSongComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.cacheService.getArtistsAsObservable().subscribe(d => this.artistList = d);
+    this.artists.valueChanges.subscribe(
+      c => this.songForm.controls['artists'].setValue(c.map(x => x.id))
+    )
   }
 
   private initForm(): void {
     this.songForm = this.formBuilder.group({ 
       title: new FormControl('', [Validators.required, Validators.min(3)]),
-      durationInSec: new FormControl(0, [Validators.required]),
+      durationInSec: new FormControl('', [Validators.required]),
+      artists: new FormControl('', [Validators.required])
     });
   }
 
   public addSong() {
-    const _title = this.songForm.controls['title'].value;
-    const song = {
-      id: null,
-      title: _title.split('-')[0],
-      durationInSec: _title.split('-')[1],
-      artists: []
-    };
-
-    this.songService.addSong(song).subscribe({
+    this.songService.addSong(this.songForm.value).subscribe({
       next: () => {
         this.songForm.reset();
-        this.router.navigate(['songs'])
+        this.router.navigate(['songs/list']);
       },
       error: (e: any) => console.error('error', e)
-    });    
+    });
   }
 
+  public back() {
+    this.router.navigate(['songs/list']);
+  }
+  
+  get friendlyDuration(): string {
+    const duration = this.songForm.controls['durationInSec'].value || 0;
+    return friendlyDuration(duration);
+  }
 }

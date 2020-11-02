@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Song } from 'src/app/interfaces/song';
+import { CacheService } from 'src/app/services/cache.service';
 import { SongService } from 'src/app/services/fb-services/song.service';
 import { friendlyDuration } from 'src/app/utils/song-utils';
-import { CacheService } from 'src/app/services/cache.service';
-import { Router } from '@angular/router';
-
 
 @Component({
-  selector: 'app-songs',
-  templateUrl: './songs.component.html',
-  styleUrls: ['./songs.component.scss',
-    '../home/home.component.scss'
-  ]
+  selector: 'app-song-list',
+  templateUrl: './song-list.component.html',
+  styleUrls: ['./song-list.component.scss', '../songs.component.scss']
 })
-export class SongsComponent implements OnInit {
+export class SongListComponent implements OnInit {
 
   public songs: Song[] = [];
   private currentCriteria = '';

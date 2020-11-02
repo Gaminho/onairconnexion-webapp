@@ -1,0 +1,19 @@
+<app-action-bar class="top-bar"
+    buttonLabel="Nouveau morceau"
+    (search)="filter($event)"
+    (addItem)="addItem()">
+</app-action-bar>
+
+<div class="songs-content">
+
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let song of songs">
+            <div class="left">
+                {{song.title}}
+                <p>{{formatArtists(song)}}</p>
+            </div>
+            <span>{{formatDuration(song.durationInSec)}}</span>
+        </mat-list-item>
+    </mat-list>
+
+</div>
