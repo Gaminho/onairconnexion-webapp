@@ -3,4 +3,6 @@ export class Song {
     title: string;
     durationInSec: number;
     artists: string[] = [];
+    projectId: string;
+    comment: string;
 }

@@ -1,4 +1,39 @@
-form {
+form.new-song {
+    width: 90%;
+    
+    section {
+        padding: 8px;
+
+        &.artist {
+
+            .form-group {
+                height: 100%;
+            }
+
+            select {
+                height: 80%;
+            }
+        }
+    }
+
+    button:disabled {
+        background-color: #EDEDED;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .row.action {
+        flex-direction: row-reverse;
+
+        button:first-of-type {
+            margin-left: .5rem;
+        }
+    }
+}
+
+form.test {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -17,7 +52,7 @@ form {
   }
 
 h4 {
-    color: blanchedalmond;
+    color: #424242;
 }
 
 ::ng-deep {

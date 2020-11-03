@@ -39,7 +39,9 @@ export class AddSongComponent implements OnInit {
     this.songForm = this.formBuilder.group({ 
       title: new FormControl('', [Validators.required, Validators.min(3)]),
       durationInSec: new FormControl('', [Validators.required]),
-      artists: new FormControl('', [Validators.required])
+      artists: new FormControl('', [Validators.required]),
+      projectId: new FormControl('', []),
+      comment: new FormControl('', [])
     });
   }
 

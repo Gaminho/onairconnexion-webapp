@@ -6,8 +6,76 @@
 </div>
 
 <div class="songs-content">
+    
+    <h4>TEST</h4>
+
+    <form [formGroup]="songForm" class="new-song">
         
-    <form [formGroup]="songForm" class="form-inline">
+        <div class="row">
+
+
+            <section class="col-4">
+                <div class="form-group">
+                    <label for="title">Titre </label>
+                    <input type="text" class="form-control" id="title" 
+                        formControlName="title" placeholder="Saisissez le titre">
+                </div>
+
+                <div class="form-group">
+                    <label for="durationInSec">Durée</label>
+                    <input type="number" class="form-control" id="durationInSec" 
+                        formControlName="durationInSec" aria-describedby="durationInSecHelp" 
+                        placeholder="Durée en secondes">
+                    <small id="durationInSecHelp" class="form-text text-muted">
+                        en secondes ({{friendlyDuration}})
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="my-1 mr-2" for="project">Project</label>
+                    <select class="custom-select my-0" id="inlineFormCustomSelectPref"
+                        formControlName="projectId">
+                        <option selected>Sélectionnez un projet</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="col-4 artist">
+                <div class="form-group">
+                    <label for="artists">Artistes</label>
+                    <select class="custom-select" id="artists" multiple
+                        [formControl]="artists">
+                        <option *ngFor="let artist of artistList" [value]="artist"
+                            selected>{{artist.name}}</option>
+                    </select>
+                </div>
+
+            </section>
+
+            <section class="col-4">
+                <div class="form-group">
+                    <label for="additional">Scénographie</label>
+                    <textarea class="form-control" id="additional" rows="10"
+                        formControlName="comment"></textarea>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="row col-sm-12 action m-0 p-0">
+            <button mat-raised-button color="primary" (click)="addSong()" type="submit"
+                [disabled]="!songForm.valid">
+                Ajouter un morceau
+            </button>
+
+            <button mat-raised-button (click)="addSong()">
+                Annuler
+            </button>
+        </div>
+    </form>
+    
+
+    <form [formGroup]="songForm" class="form-inline test" [hidden]="true">
     
         <h4>Nouveau morceau</h4>
 
@@ -40,7 +108,7 @@
             </mat-select>
         </mat-form-field>
 
-          <br/>
+        <br/>
 
         <div class="form-group mx-sm-3 mb-1">
             <button mat-raised-button color="primary" (click)="addSong()" type="submit"
