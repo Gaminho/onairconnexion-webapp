@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Song } from 'src/app/interfaces/song';
 import { CacheService } from 'src/app/services/cache.service';
 import { SongService } from 'src/app/services/fb-services/song.service';
+import { faMusic } from '@fortawesome/free-solid-svg-icons';
 import { friendlyDuration } from 'src/app/utils/song-utils';
 
 @Component({
@@ -14,6 +15,8 @@ export class SongListComponent implements OnInit {
 
   public songs: Song[] = [];
   private currentCriteria = '';
+  public faMusic = faMusic;
+
 
   constructor(private readonly songService: SongService,
     private router: Router,

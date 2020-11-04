@@ -5,4 +5,6 @@ export class Song {
     artists: string[] = [];
     projectId: string;
     comment: string;
+    songPath: string;
+    prodPath: string;
 }

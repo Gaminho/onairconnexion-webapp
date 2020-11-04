@@ -6,14 +6,16 @@
 
 <div class="songs-content">
 
-    <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let song of songs">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let song of songs">
             <div class="left">
-                {{song.title}}
-                <p>{{formatArtists(song)}}</p>
+                {{song.title}} <span>{{formatArtists(song)}}</span>
             </div>
-            <span>{{formatDuration(song.durationInSec)}}</span>
-        </mat-list-item>
-    </mat-list>
-
+            <div class="right">
+                <fa-icon *ngIf="song.songPath" [icon]="faMusic"></fa-icon>
+                <span>{{formatDuration(song.durationInSec)}}</span>
+            </div>
+            
+        </li>
+    </ul>
 </div>

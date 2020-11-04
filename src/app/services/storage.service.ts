@@ -7,11 +7,11 @@ import { Observable, from } from 'rxjs';
 })
 export class StorageService {
 
-    public uploadSong(song: File): Observable<any> {
-      return from(new Promise<any>((resolve, reject) => {
-        firebase.storage().ref().child('songs').child(song.name).put(song)
+  public uploadSong(song: File): Observable<any> {
+    return from(new Promise<any>((resolve, reject) => {
+      firebase.storage().ref().child('songs').child(song.name).put(song)
         .then(d => resolve(d.ref.fullPath))
         .catch(e => reject(e))
-      }));
-    }
+    }));
+  }
 }

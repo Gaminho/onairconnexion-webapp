@@ -24,10 +24,42 @@
             }
         }
 
-        span {
-            color: blanchedalmond;
-            font-size: .8rem;
-        }
+        
     }
 
+}
+
+ul {
+    width: 60%;
+
+    li {
+        display: flex;
+        background-color: #FBFBFB;
+        justify-content: space-between; 
+
+        &.list-group-item {
+            padding: .3rem 1rem !important;
+        }
+
+        .left {
+            span {
+                font-size: .7rem;
+                color: gray;
+            }
+        }
+
+        .right {
+
+            fa-icon {
+                font-size: .6rem;
+                margin: 0 1rem;
+            }
+
+            span {
+                font-size: 1rem;
+            }
+        }
+
+        
+    }
 }

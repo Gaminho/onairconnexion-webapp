@@ -81,7 +81,7 @@
                         (click)="selectArtist(artist.id)"
                         [ngClass]="{'selected': isSelected(artist.id)}">
                         {{artist.name}}
-                        <fa-icon *ngIf="isSelected(artist.id)" [icon]="faFacebook"></fa-icon>
+                        <fa-icon *ngIf="isSelected(artist.id)" [icon]="faCheck"></fa-icon>
                     </span>
                 </article>
             
@@ -95,7 +95,7 @@
                 Ajouter un morceau
             </button>
 
-            <button mat-raised-button (click)="addSong()" type="reset">
+            <button mat-raised-button (click)="back()" type="reset">
                 Annuler
             </button>
         </div>

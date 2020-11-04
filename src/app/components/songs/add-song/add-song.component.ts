@@ -22,7 +22,7 @@ export class AddSongComponent implements OnInit {
 
   public faBack = faChevronLeft;
   public songForm: FormGroup;
-  public readonly faFacebook = faCheck;
+  public readonly faCheck = faCheck;
   private loading = false;
 
   private songFile: File;
