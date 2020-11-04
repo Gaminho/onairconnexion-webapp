@@ -6,60 +6,87 @@
 </div>
 
 <div class="songs-content">
-    
-    <h4>TEST</h4>
-
+        
     <form [formGroup]="songForm" class="new-song">
         
-        <div class="row">
+        <input #songInput type="file" (change)="onFileChanged($event.target.files, 'song')" accept=".mp3">
+        <input #prodInput type="file" (change)="onFileChanged($event.target.files, 'prod')" accept=".mp3">
 
+        <h3>Nouveau morceau</h3>
 
-            <section class="col-4">
-                <div class="form-group">
-                    <label for="title">Titre </label>
-                    <input type="text" class="form-control" id="title" 
-                        formControlName="title" placeholder="Saisissez le titre">
+        <div class="row m-0">
+
+            <div class="col-5 p-0">
+               
+                <!-- TITLE -->
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="title">Titre</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Titre" 
+                        aria-describedby="title" formControlName="title">
                 </div>
 
-                <div class="form-group">
-                    <label for="durationInSec">Durée</label>
-                    <input type="number" class="form-control" id="durationInSec" 
-                        formControlName="durationInSec" aria-describedby="durationInSecHelp" 
-                        placeholder="Durée en secondes">
-                    <small id="durationInSecHelp" class="form-text text-muted">
-                        en secondes ({{friendlyDuration}})
-                    </small>
+                <!-- DURATION -->
+                <div class="input-group input-group-sm mb-0">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="title">Durée</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Durée" 
+                        aria-describedby="title" formControlName="durationInSec">
                 </div>
+                <small>en secondes ({{friendlyDuration}})</small>
 
-                <div class="form-group">
-                    <label class="my-1 mr-2" for="project">Project</label>
-                    <select class="custom-select my-0" id="inlineFormCustomSelectPref"
+                <!-- PROJECT -->
+                <div class="input-group input-group-sm mt-2 mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="projects">Projet</label>
+                    </div>
+                    <select class="custom-select" id="projects"
                         formControlName="projectId">
                         <option selected>Sélectionnez un projet</option>
                     </select>
                 </div>
-            </section>
 
-            <section class="col-4 artist">
-                <div class="form-group">
-                    <label for="artists">Artistes</label>
-                    <select class="custom-select" id="artists" multiple
-                        [formControl]="artists">
-                        <option *ngFor="let artist of artistList" [value]="artist"
-                            selected>{{artist.name}}</option>
-                    </select>
+                <!-- MP3 + PROD-->
+                <div class="input-group input-group-sm mb-3 files-action">
+
+                    <div class="col-6 pl-0 pr-1">
+                        <button class="test small btn-block" (click)="importSong('song')">Ajouter le mp3</button>
+                        <small>{{songFileName}}</small>
+                    </div>
+
+                    <div class="col-6 pr-0 pl-1">
+                        <button class="test small btn-block" (click)="importSong('prod')">Ajouter la prod</button>
+                        <small>{{prodFileName}}</small>
+                    </div>
+
                 </div>
 
-            </section>
-
-            <section class="col-4">
-                <div class="form-group">
-                    <label for="additional">Scénographie</label>
-                    <textarea class="form-control" id="additional" rows="10"
+                <!-- COMMENT -->
+                <div class="input-group input-group-sm mt-2 mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Scénographie</span>
+                    </div>
+                    <textarea class="form-control" aria-label="Scénographie" rows="3"
                         formControlName="comment"></textarea>
                 </div>
-            </section>
 
+            </div>
+
+            <div class="m-0 col-6 ml-3 artist-container">
+            
+                <article class="col-4" *ngFor="let artist of artistList">
+                    <span class="test" 
+                        (click)="selectArtist(artist.id)"
+                        [ngClass]="{'selected': isSelected(artist.id)}">
+                        {{artist.name}}
+                        <fa-icon *ngIf="isSelected(artist.id)" [icon]="faFacebook"></fa-icon>
+                    </span>
+                </article>
+            
+            </div>
+            
         </div>
 
         <div class="row col-sm-12 action m-0 p-0">
@@ -68,54 +95,11 @@
                 Ajouter un morceau
             </button>
 
-            <button mat-raised-button (click)="addSong()">
+            <button mat-raised-button (click)="addSong()" type="reset">
                 Annuler
             </button>
         </div>
-    </form>
     
-
-    <form [formGroup]="songForm" class="form-inline test" [hidden]="true">
-    
-        <h4>Nouveau morceau</h4>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Titre</mat-label>
-            <input matInput placeholder="Saisissez le titre" formControlName="title">
-        </mat-form-field>
-
-        <br/>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Durée</mat-label>
-            <input matInput placeholder="Saisissez la durée" type="number"
-                formControlName="durationInSec">
-            <mat-hint>en secondes ({{friendlyDuration}})</mat-hint>
-        </mat-form-field>
-
-        <br/>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Artistes</mat-label>
-            <mat-select [formControl]="artists" multiple>
-                <mat-select-trigger>
-                {{artists.value ? artists.value[0].name : ''}}
-                <span *ngIf="artists.value?.length > 1" class="example-additional-selection">
-                    (+{{artists.value.length - 1}} {{artists.value?.length === 2 ? 'autre' : 'autres'}})
-                </span>
-                </mat-select-trigger>
-                <mat-option *ngFor="let artist of artistList" [value]="artist">{{artist.name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <br/>
-
-        <div class="form-group mx-sm-3 mb-1">
-            <button mat-raised-button color="primary" (click)="addSong()" type="submit"
-                [disabled]="!songForm.valid">
-                Ajouter un morceau
-            </button>
-        </div>
-
     </form>
 </div>
+
