@@ -19,9 +19,7 @@ export class IsSignedInGuard implements CanActivate {
         this._router.navigate(['/login']);
     }
 
-    this.cacheService.init();
-
-    return isSignedIn;
+    return false;
   }
 
 }

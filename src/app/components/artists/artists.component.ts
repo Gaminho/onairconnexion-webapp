@@ -25,7 +25,8 @@ export class ArtistsComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.refreshArtists();
+    this.cacheService.getArtistsAsObservable()
+      .subscribe(artists => this.artists = artists);
   }
 
   public addArtist() {
@@ -45,10 +46,7 @@ export class ArtistsComponent implements OnInit {
 
   public saveArtist(artist: Artist): void {
     this.artistService.addArtist(artist).subscribe({
-      next: () => {
-        this.artists.push(artist);
-        this.artists.sort((a, b) => b.name < a.name ? 1: -1);
-      },
+      next: () => this.cacheService.updateArtists(),
       error: e => console.error('error', e)
     });
   }

@@ -1,27 +1,3 @@
-<div class="songs-list">
-
-    <form [formGroup]="songForm" class="form-inline" *ngIf="isAdmin">
-        <div class="form-group mb-2">
-            <label for="title" class="sr-only">Titre</label>
-            <input matInput placeholder="Titre" type="text"
-                class="form-control" id="title"
-                formControlName="title">
-        </div>
-
-        <div class="form-group mx-sm-3 mb-2">
-            <button mat-raised-button (click)="addSong()" type="submit"
-                [disabled]="!songForm.valid">
-                Ajouter un morceau
-            </button>
-        </div>
-
-    </form>
-
-    <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let song of songs">
-            {{song.title}}
-            <span>{{formatDuration(song.durationInSec)}}</span>
-        </mat-list-item>
-    </mat-list>
-
+<div class="songs-container">
+    <router-outlet></router-outlet>
 </div>

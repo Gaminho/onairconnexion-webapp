@@ -1,0 +1,141 @@
+.songs-content {
+    display: block !important;
+}
+
+form.new-song {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+    section {
+
+        &.artist {
+
+            .form-group {
+                height: 100%;
+            }
+
+            select {
+                height: 80%;
+            }
+        }
+    }
+
+    button:disabled {
+        background-color: #EDEDED;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+}
+
+form.test {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #424242;
+    border-radius: 4px;
+    padding: 16px;
+
+    input {
+        width: 100%;
+    }
+}
+
+.example-additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+  }
+
+h3 {
+    color: #424242;
+    margin-bottom: 2rem;
+}
+
+input {
+    outline: none;
+}
+
+::ng-deep {
+    fa-icon {
+        margin-right: 8px;
+    }
+}
+
+
+.test {
+    cursor: pointer;
+    background-color: #efefef;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: .3s;
+    outline: none;
+
+    &:hover {
+        background-color: #D9D9D9;
+        transition: .3s;
+    }
+
+    &.small {
+        padding: 5px 15px;
+        font-size: 12px;
+    }
+}
+
+.input-group.files-action {
+    justify-content: center;
+}
+
+.action {
+    position: absolute;
+    bottom: 0;
+    flex-direction: row-reverse;
+
+    button:first-of-type {
+        margin-left: .5rem;
+    }
+}
+
+.artist-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+
+    article {
+        display: flex;
+        justify-content: center;
+        border-radius: 4px;
+        font-size: 14px;
+        padding: 0px 12px;
+        margin-bottom: 1rem;
+
+        span {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 12px 0;
+            text-align: center;
+
+            &.selected {
+                border: 1px solid #424242;
+            }
+
+            fa-icon {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                font-size: 10px;
+                color: #424242;
+            }
+        }
+    }
+}
+
+input[type=file] {
+    display: none;
+}

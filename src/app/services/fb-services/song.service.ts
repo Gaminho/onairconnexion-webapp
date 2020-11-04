@@ -15,8 +15,8 @@ export class SongService extends AbstractFirebaseService {
   public getSongs(): Observable<Song[]> {
     return from(new Promise<Song[]>((resolve, reject) => {
       this.ref.get()
-      .then(x => x.docs.map(x => x.data() as Song))
-      .then(x => resolve(x))
+      .then(x => x.docs.map(x => this.songFromDoc(x)))
+      .then(songs => resolve(songs))
       .catch(e => reject(e))
     }));
   }
@@ -29,5 +29,11 @@ export class SongService extends AbstractFirebaseService {
       })
       .catch(e => reject(e))
     }));
+  }
+
+  private songFromDoc(x: firebase.firestore.QueryDocumentSnapshot): Song {
+    const song = x.data() as Song;
+    song.id = x.id;
+    return song;
   }
 }

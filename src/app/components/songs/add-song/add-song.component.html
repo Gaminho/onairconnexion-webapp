@@ -1,0 +1,105 @@
+<div class="top-bar">
+    <button mat-raised-button (click)="back()">
+        <fa-icon [icon]="faBack"></fa-icon>
+        Retour
+    </button>
+</div>
+
+<div class="songs-content">
+        
+    <form [formGroup]="songForm" class="new-song">
+        
+        <input #songInput type="file" (change)="onFileChanged($event.target.files, 'song')" accept=".mp3">
+        <input #prodInput type="file" (change)="onFileChanged($event.target.files, 'prod')" accept=".mp3">
+
+        <h3>Nouveau morceau</h3>
+
+        <div class="row m-0">
+
+            <div class="col-5 p-0">
+               
+                <!-- TITLE -->
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="title">Titre</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Titre" 
+                        aria-describedby="title" formControlName="title">
+                </div>
+
+                <!-- DURATION -->
+                <div class="input-group input-group-sm mb-0">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="title">Durée</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Durée" 
+                        aria-describedby="title" formControlName="durationInSec">
+                </div>
+                <small>en secondes ({{friendlyDuration}})</small>
+
+                <!-- PROJECT -->
+                <div class="input-group input-group-sm mt-2 mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="projects">Projet</label>
+                    </div>
+                    <select class="custom-select" id="projects"
+                        formControlName="projectId">
+                        <option selected>Sélectionnez un projet</option>
+                    </select>
+                </div>
+
+                <!-- MP3 + PROD-->
+                <div class="input-group input-group-sm mb-3 files-action">
+
+                    <div class="col-6 pl-0 pr-1">
+                        <button class="test small btn-block" (click)="importSong('song')">Ajouter le mp3</button>
+                        <small>{{songFileName}}</small>
+                    </div>
+
+                    <div class="col-6 pr-0 pl-1">
+                        <button class="test small btn-block" (click)="importSong('prod')">Ajouter la prod</button>
+                        <small>{{prodFileName}}</small>
+                    </div>
+
+                </div>
+
+                <!-- COMMENT -->
+                <div class="input-group input-group-sm mt-2 mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Scénographie</span>
+                    </div>
+                    <textarea class="form-control" aria-label="Scénographie" rows="3"
+                        formControlName="comment"></textarea>
+                </div>
+
+            </div>
+
+            <div class="m-0 col-6 ml-3 artist-container">
+            
+                <article class="col-4" *ngFor="let artist of artistList">
+                    <span class="test" 
+                        (click)="selectArtist(artist.id)"
+                        [ngClass]="{'selected': isSelected(artist.id)}">
+                        {{artist.name}}
+                        <fa-icon *ngIf="isSelected(artist.id)" [icon]="faFacebook"></fa-icon>
+                    </span>
+                </article>
+            
+            </div>
+            
+        </div>
+
+        <div class="row col-sm-12 action m-0 p-0">
+            <button mat-raised-button color="primary" (click)="addSong()" type="submit"
+                [disabled]="!songForm.valid">
+                Ajouter un morceau
+            </button>
+
+            <button mat-raised-button (click)="addSong()" type="reset">
+                Annuler
+            </button>
+        </div>
+    
+    </form>
+</div>
+
