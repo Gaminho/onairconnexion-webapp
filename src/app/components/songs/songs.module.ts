@@ -8,14 +8,16 @@ import { MatButtonModule, MatFormFieldModule, MatListModule, MatSelectModule } f
 import { SongListComponent } from './song-list/song-list.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { SongDetailComponent } from './song-detail/song-detail.component';
 
 
 @NgModule({
   declarations: [
     SongsComponent, 
     AddSongComponent,
-    SongListComponent
+    SongListComponent,
+    SongDetailComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +31,6 @@ import {MatInputModule} from '@angular/material/input';
     MatListModule,
     ReactiveFormsModule
   ],
-  exports: [SongsComponent, AddSongComponent, SongListComponent]
+  exports: [SongsComponent, AddSongComponent, SongListComponent, SongDetailComponent]
 })
 export class SongsModule { }

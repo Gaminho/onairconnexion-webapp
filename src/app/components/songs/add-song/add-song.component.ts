@@ -132,11 +132,11 @@ export class AddSongComponent implements OnInit {
   }
 
   get songFileName(): string {
-    return this.songFile ? this.songFile.name : '';
+    return this.songFile ? `[MORCEAU] ${this.songFile.name}` : 'Ajouter un mp3';
   }
 
   get prodFileName(): string {
-    return this.prodFile ? this.prodFile.name : '';
+    return this.prodFile ? `[PROD] ${this.prodFile.name}` : 'Ajouter une prod';
   }
 
   private uploadPromise(waht: string = 'song'): Promise<string> {

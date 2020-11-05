@@ -1,0 +1,79 @@
+<div class="top-bar">
+    <button mat-raised-button (click)="back()" class="back">
+        <fa-icon [icon]="faBack"></fa-icon>
+        Retour
+    </button>
+</div>
+
+<div class="songs-content">
+
+<div class="row m-0 p-0">
+
+    <div class="col-2 p-0 mr-3 project-container">
+        <img src="../../../../assets/oac.jpg" class="rounded responsive img-fluid" alt="...">
+        <h5>On vit OnAir</h5>
+    </div>
+
+    <div class="col-7">
+        
+        <h3>
+            {{currentSong.title}}
+            
+            <h6>
+                <span>{{duration}} - </span>
+                {{artists}}
+            </h6>
+            <div>2020</div>
+        </h3>
+
+        <div class="download">
+
+            <div class="row m-0">
+                <button class="custom-btn small mr-1" [disabled]="!currentSong.songPath || isDownloading('song')"
+                    (click)="download('song')">
+                    <fa-icon [icon]="faDownload"></fa-icon>
+                    Son
+                </button>
+                <button class="custom-btn small ml-1" [disabled]="!currentSong.prodPath || isDownloading('prod')"
+                    (click)="download('prod')">
+                    <fa-icon [icon]="faDownload"></fa-icon>
+                    Prod
+                </button>
+            </div>
+
+        </div>
+
+        <div class="row ml-0 mr-0 additional">
+            <h5>Information scénique</h5>
+            
+            <p>Aucune information</p>
+        </div>
+        
+    </div>
+
+    <div class="row m-0 p-0 col-3 player" [hidden]="true">
+
+        <div class="row m-0 p-0 player-action">
+            <div class="col-3 left">
+                <fa-icon [icon]="faPlay"></fa-icon>
+            </div>
+    
+            <div class="col-9">
+                WTG
+            </div>
+        </div>
+
+        <div class="row m-0 p-0">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" (click)="seeSong(song)">
+                    {{currentSong.title}}
+                </li>
+                <li class="list-group-item" (click)="seeSong(song)">
+                    {{currentSong.title}} (prod)
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+
+</div>

@@ -8,10 +8,47 @@ $top-bar-height: 45px;
 
 .songs-content {
     height: calc(100% - #{$top-bar-height});
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block;
     padding: 16px;
     overflow: auto;
 } 
+
+h3 {
+    color: #424242;
+    margin-bottom: 2rem;
+}
+
+.custom-btn {
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #efefef;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: .3s;
+    outline: none;
+
+    &:hover {
+        background-color: #D9D9D9;
+        transition: .3s;
+    }
+
+    &:disabled {
+        background-color: #cccccc;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &.small {
+        padding: 5px 15px;
+        font-size: 12px;
+    }
+}
+
+button {
+    fa-icon {
+        margin-right: 4px;
+    }
+}

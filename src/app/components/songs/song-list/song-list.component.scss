@@ -1,41 +1,17 @@
-::ng-deep {
-
-    mat-list {
-        width: 60%;
-    }
-
-    mat-list-item {
-        background-color: #424242;
-        margin: .2rem 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        .mat-list-item-content {
-            justify-content: space-between;    
-        }
-
-        .left {
-            p {
-                margin: 0;
-                font-size: .7rem;
-                color: blanchedalmond;
-            }
-        }
-
-        
-    }
-
-}
-
 ul {
     width: 60%;
+    margin: auto;
 
     li {
         display: flex;
         background-color: #FBFBFB;
         justify-content: space-between; 
+        cursor: default;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #dbdbdb6b;
+        }
 
         &.list-group-item {
             padding: .3rem 1rem !important;
@@ -59,7 +35,6 @@ ul {
                 font-size: 1rem;
             }
         }
-
-        
+ 
     }
 }

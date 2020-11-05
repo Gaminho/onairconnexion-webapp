@@ -4,7 +4,7 @@ import { Song } from 'src/app/interfaces/song';
 import { CacheService } from 'src/app/services/cache.service';
 import { SongService } from 'src/app/services/fb-services/song.service';
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
-import { friendlyDuration } from 'src/app/utils/song-utils';
+import { formatArtists, friendlyDuration } from 'src/app/utils/song-utils';
 
 @Component({
   selector: 'app-song-list',
@@ -41,6 +41,10 @@ export class SongListComponent implements OnInit {
     this.router.navigate(['songs/new']);
   }
 
+  public seeSong(song: Song): void {
+    this.router.navigate(['songs/detail', song.id]);
+  }
+
   public filter(criteria: string) {
     this.currentCriteria = criteria;
     this.refreshSongs();
@@ -65,14 +69,7 @@ export class SongListComponent implements OnInit {
   }
 
   public formatArtists(song: Song): string {
-    let str = '';
-    if (song.artists) {
-      str = song.artists.map(id => this.cacheService.getArtists()
-      .find(x => x.id === id).name)
-      .sort((a, b) => b < a ? 1: -1)
-      .join(', ');
-    }
-    return str;
+    return formatArtists(song, this.cacheService);
   }
 
   get isAdmin(): boolean {

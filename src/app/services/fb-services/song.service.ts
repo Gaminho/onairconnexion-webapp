@@ -21,14 +21,17 @@ export class SongService extends AbstractFirebaseService {
     }));
   }
 
-  public addSong(song: Song): Observable<any> {
-    return from(new Promise<any>((resolve, reject) => {
-      this.ref.add(song)
-      .then(x => {
-        resolve(x);
-      })
+  public getSongWithId(songId: string): Observable<Song> {
+    return from(new Promise<Song>((resolve, reject) => 
+      this.ref.doc(songId).get()
+      .then(x => resolve(this.songFromDoc(x)))
       .catch(e => reject(e))
-    }));
+    ));
+  }
+
+  public addSong(song: Song): Observable<any> {
+    return from(new Promise<any>((resolve, reject) => 
+      this.ref.add(song).then(x => resolve(x)).catch(e => reject(e))));
   }
 
   private songFromDoc(x: firebase.firestore.QueryDocumentSnapshot): Song {

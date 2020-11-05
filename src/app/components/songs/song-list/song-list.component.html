@@ -7,7 +7,7 @@
 <div class="songs-content">
 
     <ul class="list-group list-group-flush">
-        <li class="list-group-item" *ngFor="let song of songs">
+        <li class="list-group-item" *ngFor="let song of songs" (click)="seeSong(song)">
             <div class="left">
                 {{song.title}} <span>{{formatArtists(song)}}</span>
             </div>

@@ -1,0 +1,74 @@
+.project-container {
+
+    h5 {
+        text-align: center;
+        margin: .5rem 0;
+    }
+
+}
+
+h3 {
+
+    h6 {
+        color: grey;
+        margin: 0;
+
+        span {
+            font-size: .9rem;
+        }
+    }
+
+    div {
+        font-size: .7rem;
+    }
+
+}
+
+.download {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.additional {
+    margin-top: 2rem;
+    flex-direction: column;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid gray;
+    border-radius: 4px;
+    height: fit-content;
+
+    div {
+        display: flex;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        align-items: center;
+        font-size: 10px;
+    }
+
+    .player-action {
+        border-bottom: 1px solid grey;
+    }
+
+    ul {
+        width: 100%;
+
+        li {
+            &:hover{
+                cursor: pointer;
+                background-color: #FAFAFA;
+            }
+        }
+    }
+
+    .left {
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 14px;
+        justify-content: center;
+    }
+}
