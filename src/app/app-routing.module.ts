@@ -13,6 +13,7 @@ import { AddSongComponent } from './components/songs/add-song/add-song.component
 import { SongListComponent } from './components/songs/song-list/song-list.component';
 import { SongsComponent } from './components/songs/songs.component';
 import { SongDetailComponent } from './components/songs/song-detail/song-detail.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: AccueilComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
       },
       {
         path: 'artists',

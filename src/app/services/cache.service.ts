@@ -33,6 +33,10 @@ export class CacheService {
     return this.artists;
   }
 
+  public findArtistById(id: string): Artist {
+    return this.artists.find(x => x.id === id);
+  }
+
   public getArtistsAsObservable(): BehaviorSubject<Artist[]> {
     return this.obsArtists;
   }

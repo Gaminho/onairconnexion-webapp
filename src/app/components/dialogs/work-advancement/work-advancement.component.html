@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h4 class="modal-title">Etat d'avancement</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close(false)">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <table class="table table-sm">
+        <tbody>
+            <tr *ngFor="let id of keys">
+                <td class="title">
+                    {{getName(id)}}
+                </td>
+                <td>
+                    <select class="custom-select custom-select-sm" [ngClass]="currentStatus[id]"
+                        (change)="updateStatus(id, $event.target.value)">
+                        <option [selected]="currentStatus[id] === 'WRITING'" value="WRITING">Ecriture</option>
+                        <option [selected]="currentStatus[id] === 'RECORDING'" value="RECORDING">Enregistrement</option>
+                        <option [selected]="currentStatus[id] === 'MIX'" value="MIX">Mix</option>
+                        <option [selected]="currentStatus[id] === 'FINISH'" value="FINISH">Finitions</option>
+                        <option [selected]="currentStatus[id] === 'DONE'" value="DONE">Terminé</option>
+                    </select>
+                </td>
+                <td class="icon">
+                    <fa-icon [icon]="faTimes" (click)="delete(id)"></fa-icon>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <select class="custom-select custom-select-sm"
+                        [disabled]="getAvailableArtists().length === 0"
+                        (change)="addArtist($event.target.value)">
+                        <option selected>Ajouter un artiste</option>
+                        <option *ngFor="let artist of getAvailableArtists()" [value]="artist.id">{{artist.name}}</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="modal-footer">
+    <button class="custom-btn small" (click)="close(false)">Annuler</button>
+    <button class="custom-btn small" (click)="close(true)">Enregistrer</button>
+</div>

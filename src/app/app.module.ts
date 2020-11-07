@@ -25,6 +25,10 @@ import { NavbarModule } from './components/home/navbar/navbar.module';
 import { AccountModule } from './components/account/account.module';
 import { SongsModule } from './components/songs/songs.module';
 import { SharedModule } from './components/shared/shared.module';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { WorkAdvancementComponent } from './components/dialogs/work-advancement/work-advancement.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NewWorkComponent } from './components/dialogs/new-work/new-work.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -33,11 +37,15 @@ firebase.initializeApp(environment.firebaseConfig);
     AppComponent,
     HomeComponent,
     ProjectsComponent,
-    AccueilComponent
+    AccueilComponent,
+    DashboardComponent,
+    WorkAdvancementComponent,
+    NewWorkComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgbModule,
     SigningModule,
     ArtistsModule,
     AccountModule,
@@ -57,6 +65,7 @@ firebase.initializeApp(environment.firebaseConfig);
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
+  entryComponents: [WorkAdvancementComponent, NewWorkComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

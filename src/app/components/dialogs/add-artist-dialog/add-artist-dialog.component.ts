@@ -14,7 +14,6 @@ export class AddArtistDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AddArtistDialogComponent>) { 
-
     }
 
   ngOnInit() {

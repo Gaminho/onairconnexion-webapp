@@ -1,0 +1,65 @@
+<div class="row m-0 p-0 card-container col-12">
+    <div class="card-info col-3">
+        <h6>Morceaux en cours</h6>
+        <span>{{songCount}}</span>
+    </div>
+    <div class="card-info col-3">
+        <h6>Beats en cours</h6>
+        <span>{{beatCount}}</span>
+    </div>
+</div>
+
+
+<div class="row col-12 m-0 action-bar">
+  <button class="custom-btn small" (click)="newWork()">Nouveau projet</button>
+</div>
+
+<div class="container m-0 p-0">
+    <div class="col-12 p-0" style="margin: auto;">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th class="title" scope="col">Titre</th>
+                <th scope="col">Type</th>
+                <th scope="col">Prod</th>
+                <th class="artist" scope="col">Artistes</th>
+                <th class="voice" scope="col">Avancement</th>
+                <th scope="col">Date</th>
+                <th class="action" scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let work of works;">
+                <td class="title">
+                    {{work.title}}
+                </td>
+                <td>{{work.type === 'SONG'  ? 'Morceau' : 'Prod'}}</td>
+                <td>
+                    <select class="custom-select custom-select-sm no-bkg {{work.beatStatus}}"
+                        (change)="updateStatus(work, $event.target.value)">
+                        <option [selected]="work.beatStatus === 'MAKING'" value="MAKING">Composition</option>
+                        <option [selected]="work.beatStatus === 'MIX'" value="MIX">Mix</option>
+                        <option [selected]="work.beatStatus === 'FINISH'" value="FINISH">Finitions</option>
+                        <option [selected]="work.beatStatus === 'DONE'" value="DONE">Terminé</option>
+                    </select>
+                </td>
+                <td>
+                  {{getArtists(work)}}
+                </td>
+                <td class="voice" (click)="open(work)" [ngClass]="{'disabled': work.type === 'BEAT'}">
+                  <div>
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                    {{getAdvancement(work)}}
+                  </div>
+                </td>
+                <td>{{work.createdOn | date : 'dd/MM/yyyy'}}</td>
+                
+                <td *ngIf="isFinish(work)">
+                    <fa-icon [icon]="faArchive"></fa-icon>
+                </td>
+                
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

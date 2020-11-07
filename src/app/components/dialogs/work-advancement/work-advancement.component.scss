@@ -1,0 +1,12 @@
+td {
+    vertical-align: middle;
+
+    &.icon {
+        text-align: right;
+    }
+    
+    fa-icon {
+        cursor: pointer;
+        color: #424242;
+    }
+}

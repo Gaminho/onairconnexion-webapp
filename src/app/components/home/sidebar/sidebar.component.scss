@@ -2,6 +2,7 @@
     background-color: #e7e7e7;
     height: 100%;
     padding-top: 8px;
+    overflow: hidden;
 }
 
 a {
@@ -12,6 +13,8 @@ a {
     align-items: center;
     height: 30px;
     color: #424242;
+    overflow: hidden;
+    text-overflow: ellipsis;
     
     &:hover {
         cursor: pointer;

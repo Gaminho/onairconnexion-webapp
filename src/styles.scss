@@ -35,3 +35,76 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: blanchedalmond;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+.custom-btn {
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #efefef;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: .3s;
+    outline: none;
+
+    &:hover {
+        background-color: #D9D9D9;
+        transition: .3s;
+    }
+
+    &:disabled {
+        background-color: #cccccc;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &.small {
+        padding: 5px 15px;
+        font-size: 12px;
+    }
+}
+
+select.custom-select {
+
+    &.no-bkg {
+        border: none;
+        background: none;
+        border-color: #b8daff;    
+    }
+
+    &.DONE {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    &.FINISH {
+        color: #004085;
+        background: none;
+        background-color: #cce5ff;
+    }
+
+    &.MIX {
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+    }
+
+    &.MAKING, &.RECORDING {
+        color: #383d41;
+        background-color: #e2e3e5;
+        border-color: #d6d8db;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transition:none;
+    }
+}
+
+button {
+    fa-icon {
+        margin-right: 4px;
+    }
+}

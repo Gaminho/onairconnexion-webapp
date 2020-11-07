@@ -1,0 +1,91 @@
+<div class="modal-header">
+    <h4 class="modal-title">Nouveau projet</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close(false)">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="workForm">
+
+        <table class="table table-sm">
+            <tbody>
+                <tr>
+                    <td class="label">Titre</td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm" placeholder="Titre" 
+                            formControlName="title">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>
+                        <select class="custom-select custom-select-sm"
+                            (change)="updateType($event.target.value)">
+                            <option [selected]="workForm.value.type === 'SONG'" value="SONG">Morceau</option>
+                            <option [selected]="workForm.value.type === 'BEAT'" value="BEAT">Prod</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prod</td>
+                    <td>
+                        <select class="custom-select custom-select-sm"
+                            (change)="updateBeatStatus($event.target.value)">
+                            <option [selected]="workForm.value.beatStatus === 'MAKING'" value="MAKING">Composition</option>
+                            <option [selected]="workForm.value.beatStatus === 'MIX'" value="MIX">Mix</option>
+                            <option [selected]="workForm.value.beatStatus === 'FINISH'" value="FINISH">Finitions</option>
+                            <option [selected]="workForm.value.beatStatus === 'DONE'" value="DONE">Terminé</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-container *ngIf="isSong">
+            Artistes
+            <table class="table table-sm">
+                <tbody>
+                    <tr *ngIf="artists.length === 0">
+                        <td colspan="3">Aucun artiste</td>
+                    </tr>
+                    <tr *ngFor="let artist of artists;">
+                        <td class="label">
+                            {{artist.name}}
+                        </td>
+                        <td>
+                            <select class="custom-select custom-select-sm"
+                                (change)="updateVoiceStatus(artist.id, $event.target.value)">
+                                <option [selected]="workForm.value.voiceStatus[artist.id] === 'WRITING'" value="WRITING">Ecriture</option>
+                                <option [selected]="workForm.value.voiceStatus[artist.id] === 'RECORDING'" value="RECORDING">Enregistrement</option>
+                                <option [selected]="workForm.value.voiceStatus[artist.id] === 'MIX'" value="MIX">Mix</option>
+                                <option [selected]="workForm.value.voiceStatus[artist.id] === 'FINISH'" value="FINISH">Finitions</option>
+                                <option [selected]="workForm.value.voiceStatus[artist.id] === 'DONE'" value="DONE">Terminé</option>
+                            </select>
+                        </td>
+                        <td class="icon">
+                            <fa-icon [icon]="faTimes" (click)="removeArtist(artist.id)"></fa-icon>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="3">
+                            <select class="custom-select custom-select-sm"
+                                [disabled]="getAvailableArtists().length === 0"
+                                (change)="addArtist($event.target.value)">
+                                <option selected>Ajouter un artiste</option>
+                                <option *ngFor="let artist of getAvailableArtists()" [value]="artist.id">{{artist.name}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </ng-container>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="custom-btn small" (click)="close(false)">Annuler</button>
+    <button class="custom-btn small" (click)="close(true)" [disabled]="!isWorkValid">Enregistrer</button>
+</div>
