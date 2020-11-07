@@ -12,6 +12,18 @@
     }
 }
 
+table {
+    td, th {
+        overflow: hidden;
+        text-overflow: ellipsis;;
+        white-space: nowrap;
+    }
+
+    td {
+        font-size: .8rem;
+    }
+}
+
 
 .card-container {
 
@@ -71,9 +83,6 @@ tr {
 
     td {
         vertical-align: middle;
-        overflow: hidden;
-        text-overflow: ellipsis;;
-        white-space: nowrap;
 
         &.voice {
             cursor: pointer;
@@ -86,6 +95,7 @@ tr {
             fa-icon {
                 display: none;
                 font-size: .6rem;
+                margin-right: .3rem;
             }
 
             &:hover {

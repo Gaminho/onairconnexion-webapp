@@ -1,6 +1,7 @@
 export class Work {
     id: string;
     title: string;
+    beatTitle: string;
     type: WorkType;
     voiceStatus: any;
     beatStatus: BeatStatus;

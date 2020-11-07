@@ -30,6 +30,7 @@ export class NewWorkComponent implements OnInit {
   private initForm(): void {
     this.workForm = this.formBuilder.group({ 
       title: new FormControl('', [Validators.required]),
+      beatTitle: new FormControl('', [Validators.required]),
       beatStatus: new FormControl(BeatStatus.MAKING, [Validators.required]),
       createdOn: new FormControl('', []),
       type: new FormControl(WorkType.SONG, [Validators.required]),

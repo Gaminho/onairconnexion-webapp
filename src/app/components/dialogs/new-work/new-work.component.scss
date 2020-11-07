@@ -14,4 +14,14 @@ td {
         width: 35%;
     }
 
+    &.no-artist {
+        border: none;
+        font-style: italic;
+        color: #721c24;
+    }
+
+    &.no-border {
+        border: none;
+    }
+
 }

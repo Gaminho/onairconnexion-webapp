@@ -31,7 +31,11 @@ export class ArtistsComponent implements OnInit {
 
   public addArtist() {
     this.dialog.open(AddArtistDialogComponent).afterClosed().subscribe(
-      (artist: Artist) => this.saveArtist(artist),
+      (artist: Artist) => {
+        if (artist.name) {
+          this.saveArtist(artist);
+        }
+      },
       (err) => console.error('error', err)
     );
   }

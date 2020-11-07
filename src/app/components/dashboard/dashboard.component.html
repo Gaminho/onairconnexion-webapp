@@ -20,8 +20,8 @@
             <thead>
             <tr>
                 <th class="title" scope="col">Titre</th>
-                <th scope="col">Type</th>
                 <th scope="col">Prod</th>
+                <th scope="col"></th>
                 <th class="artist" scope="col">Artistes</th>
                 <th class="voice" scope="col">Avancement</th>
                 <th scope="col">Date</th>
@@ -33,7 +33,12 @@
                 <td class="title">
                     {{work.title}}
                 </td>
-                <td>{{work.type === 'SONG'  ? 'Morceau' : 'Prod'}}</td>
+                <td [hidden]="true">{{work.type === 'SONG'  ? 'Morceau' : 'Prod'}}</td>
+                <td 
+                  data-toggle="tooltip" 
+                  data-placement="bottom" 
+                  [title]="work.beatTitle">
+                  {{work.beatTitle || 'Titre inconnu'}}</td>
                 <td>
                     <select class="custom-select custom-select-sm no-bkg {{work.beatStatus}}"
                         (change)="updateStatus(work, $event.target.value)">
